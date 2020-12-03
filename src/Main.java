@@ -106,8 +106,6 @@ public class Main {
             System.out.println("Anfallaren finns inte.");
             return;
         }
-
-
         System.out.println("Välj vad som skall uppdateras");
         System.out.println("1. Uppdatera Klubb");
         System.out.println("2. Uppdatera Rating");
