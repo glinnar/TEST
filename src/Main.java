@@ -99,7 +99,6 @@ public class Main {
 
 
     private static void updateStriker() {
-
         System.out.println("Skriv in vilken anfallare som skall uppdateras: ");
         String strikerName = scanner.nextLine();
         Striker listStriker = strikerList.searchStriker(strikerName);
