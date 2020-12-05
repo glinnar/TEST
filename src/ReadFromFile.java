@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class ReadFromFile {
 
@@ -16,37 +17,35 @@ public class ReadFromFile {
             in.close();*/
 
 
-    public void readFromFile() throws IOException, ClassNotFoundException {
+    public PlayerList readFromFile() throws IOException, ClassNotFoundException {
 
-        //ArrayList<Striker> slist = new ArrayList<>();
+        ArrayList<Striker> slist = new ArrayList<>();
+        PlayerList striker = null;
 
         try {
             FileInputStream fin = new FileInputStream("StrikerList.txt");
             ObjectInputStream in = new ObjectInputStream(fin);
             //list = (PlayerList) in.readObject();
 
-            PlayerList list;
-            list=(PlayerList) in.readObject();
-
-            list.listStriker();
 
 
+            striker =(PlayerList) in.readObject();
 
+
+
+
+           // list.listStriker();
 
             in.close();
             fin.close();
 
 
-
-            // lister = list;
-
-            //assert list != null;
-            //lister.listStriker();
-
         } catch (InvalidObjectException e){
             e.printStackTrace();
             System.out.println("Något gick fel");
         }
+
+        return striker;
 
     }
 

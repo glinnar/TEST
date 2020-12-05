@@ -12,23 +12,25 @@ public class Main {
 
         boolean listON = false;
         int coice;
+        fileWriter.createFile();
+        strikerList = fileReader.readFromFile();
+
         while (!listON) {
             showMenu();
             coice = scanner.nextInt();
             scanner.nextLine();
+
             switch (coice) {
                 case 1:
 
-                    fileReader.readFromFile();
-                    //printFromFile();
 
+                    strikerList.listStriker();
 
                     break;
 
                 case 2:
                     System.out.println("Lägg till ny spelare.");
                     addNewStriker();
-                    fileWriter.createFile();
                     fileWriter.writeDataToFile(strikerList);
 
                     strikerList.listStriker();
@@ -38,12 +40,14 @@ public class Main {
 
                     System.out.println("Uppdatera Spelare");
                     updateStriker();
+                    fileWriter.writeDataToFile(strikerList);
                     break;
 
                 case 4:
 
                     System.out.println("Tar bort Spelare.");
                     removeStriker();
+                   fileWriter.writeDataToFile(strikerList);
                     break;
 
                 case 5:
@@ -55,6 +59,7 @@ public class Main {
 
                 case 6:
                     System.out.println("Stänger lista.");
+                   // fileWriter.writeDataToFile(strikerList);
                     listON = true;
 
                     break;
@@ -68,7 +73,7 @@ public class Main {
 
     }
 
-    private static void addNewStriker() throws IOException, ClassNotFoundException {
+    private static Striker addNewStriker() throws IOException, ClassNotFoundException {
         System.out.print("Skriv in namnet på anfallaren: ");
         String strikerName = scanner.nextLine();
         System.out.print("Skriv in vilket land spelaren kommer ifrån: ");
@@ -95,6 +100,7 @@ public class Main {
 
         }
 
+        return newStriker;
     }
 
 
